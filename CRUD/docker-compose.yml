@@ -1,0 +1,22 @@
+services:
+  db:
+    container_name: crud
+    image: postgres
+    environment:
+      POSTGRES_USER: jerome
+      POSTGRES_PASSWORD: portfolio
+      PGDATA: /data/crud
+    volumes:
+      - db:/data/crud
+    ports:
+      - "5335:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
